@@ -1,4 +1,7 @@
 {
   "python.pythonPath": "venv/bin/python",
-  "python.venvPath": "${workspaceFolder}/venv"
+  "python.venvPath": "${workspaceFolder}/venv",
+  "python.linting.pylintArgs": [
+    "--extension-pkg-whitelist=PyQt5"
+  ]
 }
