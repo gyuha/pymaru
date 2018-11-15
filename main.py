@@ -1,29 +1,30 @@
 import sys
-from PyQt5.QtWidgets import QWidget, QDesktopWidget, QApplication
-
-
-class Example(QWidget):
-    def __init__(self):
-        super().__init__()
-
-        self.init_ui()
-
-    def init_ui(self):
-        self.resize(250, 150)
-        self.center()
-
-        self.setWindowTitle('Center')
-        self.show()
-
-    def center(self):
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
-
-
+from PyQt5 import QtWidgets
+from PyQt5 import QtGui
+from PyQt5 import uic
+from PyQt5 import QtCore
+from PyQt5.QtCore import pyqtSlot
+ 
+ 
+class Form(QtWidgets.QDialog):
+    def __init__(self, parent=None):
+        QtWidgets.QDialog.__init__(self, parent)
+        self.ui = uic.loadUi("label.ui", self)
+        self.ui.show()
+ 
+    @pyqtSlot()
+    def slot1(self):
+        self.ui.label.setText("첫번째 버튼")
+ 
+    @pyqtSlot()
+    def slot2(self):
+        self.ui.label.setText("두번째 버튼")
+ 
+    @pyqtSlot()
+    def slot3(self):
+        self.ui.label.setText("세번째 버튼")
+ 
 if __name__ == '__main__':
-
-    app = QApplication(sys.argv)
-    ex = Example()
-    sys.exit(app.exec_())
+    app = QtWidgets.QApplication(sys.argv)
+    w = Form()
+    sys.exit(app.exec())
