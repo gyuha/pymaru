@@ -6,7 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtCore import pyqtSlot
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -46,6 +47,19 @@ class Ui_Dialog(object):
         self.pushButton_2.setText(_translate("Dialog", "BUTTON 1"))
         self.pushButton.setText(_translate("Dialog", "BUTTON 2"))
         self.pushButton_3.setText(_translate("Dialog", "BUTTON 3"))
+        self.label.setText("Start")
+        print("init")
+
+    @pyqtSlot()
+    def slot1(self):
+        print("call")
+        self.label.setText("Slot 1 push")
+
+    @pyqtSlot()
+    def slot2(self):
+        print("call")
+        self.label.setText("Slot 2 push")
+
 
 
 if __name__ == "__main__":
